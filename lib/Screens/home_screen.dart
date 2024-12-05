@@ -1,4 +1,5 @@
-import "package:block/Screens/test_screen.dart";
+
+import "package:block/Screens/feedsScreen.dart";
 import "package:block/constants/consts.dart";
 import "package:block/widgets/appBarWidget.dart";
 import "package:block/widgets/feeds_widget.dart";
@@ -6,6 +7,7 @@ import "package:card_swiper/card_swiper.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:iconly/iconly.dart";
+import "package:page_transition/page_transition.dart";
 
 import "../widgets/salesWidget.dart";
 
@@ -104,18 +106,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 18,
                 ),
-                const Row(
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "All Products",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
                     ),
-                    Icon(
-                      Icons.arrow_right_rounded,
-                      size: 60,
-                      color: Colors.pinkAccent,
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, PageTransition(
+                          type: PageTransitionType.leftToRight,
+                          child: const FeedsScreen(),
+                        ),);
+                      },
+                      child: const Icon(
+                        Icons.arrow_right_rounded,
+                        size: 60,
+                        color: Colors.pinkAccent,
+                      ),
                     )
                   ],
                 ),
