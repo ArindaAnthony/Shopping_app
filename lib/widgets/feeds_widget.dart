@@ -1,6 +1,8 @@
+import 'package:block/Screens/products_details_screen.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:page_transition/page_transition.dart';
 
 class FeedsWidget extends StatelessWidget {
   const FeedsWidget({super.key});
@@ -14,7 +16,9 @@ class FeedsWidget extends StatelessWidget {
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(15),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const ProductsDetailsScreen()));
+          },
           borderRadius: BorderRadius.circular(15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +53,11 @@ class FeedsWidget extends StatelessWidget {
                 child: FancyShimmerImage(
                   height: size.height * 0.2,
                   width: double.infinity,
-                  errorWidget: const Icon(IconlyBold.danger, color: Colors.red, size: 28,),
+                  errorWidget: const Icon(
+                    IconlyBold.danger,
+                    color: Colors.red,
+                    size: 28,
+                  ),
                   imageUrl: "https://i.ibb.co/vwB46Yq/shoes.png",
                   boxFit: BoxFit.contain,
                 ),
