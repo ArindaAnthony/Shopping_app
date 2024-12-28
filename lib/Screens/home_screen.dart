@@ -1,11 +1,13 @@
-
+import "package:block/Screens/catergories_screen.dart";
 import "package:block/Screens/feedsScreen.dart";
+import "package:block/Screens/users_screen.dart";
 import "package:block/constants/consts.dart";
 import "package:block/widgets/appBarWidget.dart";
 import "package:block/widgets/feeds_widget.dart";
 import "package:card_swiper/card_swiper.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:flutter/widgets.dart";
 import "package:iconly/iconly.dart";
 import "package:page_transition/page_transition.dart";
 
@@ -47,11 +49,23 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 1,
           title: const Text("Home"),
           centerTitle: true,
-          leading: AppBarIcons(
-            function: () {},
-            iconData: IconlyBold.category,
+          leading: GestureDetector(
+            onTap: (){
+              Navigator.push(context, PageTransition(child: const Categories_Screen(), type: PageTransitionType.fade));
+            },
+            child: const Icon(IconlyBold.category, color: Colors.pinkAccent,
+            ),
           ),
-          actions: [AppBarIcons(iconData: IconlyBold.user_3, function: () {})],
+          actions:  [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, PageTransition(child: const UsersScreen(), type: PageTransitionType.fade));
+                  },
+                  child: const Icon(IconlyBold.user_3, color: Colors.pinkAccent,)),
+            )
+          ],
         ),
         body: SafeArea(
           child: Padding(
@@ -106,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 18,
                 ),
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
@@ -115,11 +129,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
                     ),
                     InkWell(
-                      onTap: (){
-                        Navigator.push(context, PageTransition(
-                          type: PageTransitionType.leftToRight,
-                          child: const FeedsScreen(),
-                        ),);
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: const FeedsScreen(),
+                          ),
+                        );
                       },
                       child: const Icon(
                         Icons.arrow_right_rounded,
@@ -134,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: GridView.builder(
-                    shrinkWrap: true,
+                      shrinkWrap: true,
                       itemCount: 5,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(

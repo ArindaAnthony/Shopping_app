@@ -1,3 +1,4 @@
+import 'package:block/Screens/catergories_screen.dart';
 import 'package:block/Screens/home_screen.dart';
 import 'package:block/constants/consts.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           ),
         )*/
 
+      //home: HomeScreen()
       home: HomeScreen()
     );
   }
